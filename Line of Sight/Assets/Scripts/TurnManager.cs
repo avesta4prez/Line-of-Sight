@@ -12,8 +12,9 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private GameObject cam1;
     [SerializeField] private GameObject cam2;
 
-    private int currentPlayerIndex;
+    [SerializeField] private int currentPlayerIndex;
     private bool waitingForNextTurn;
+    public float timeForNextTurn;
     private float turnDelay;
 
     private void Awake()
@@ -42,6 +43,16 @@ public class TurnManager : MonoBehaviour
                 ChangeTurn();
             }
         }
+        else
+        {
+            turnDelay += Time.deltaTime;
+            if (turnDelay >= timeForNextTurn)
+            {
+                turnDelay = 0;
+                
+                TriggerChangeTurn();
+            }
+        }
     }
 
     public bool IsItPlayerTurn(int index)
@@ -62,6 +73,7 @@ public class TurnManager : MonoBehaviour
     public void TriggerChangeTurn()
     {
         waitingForNextTurn = true;
+        turnDelay = 0;
     }
 
     private void ChangeTurn()

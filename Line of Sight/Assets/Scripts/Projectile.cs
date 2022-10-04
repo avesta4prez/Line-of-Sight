@@ -7,10 +7,12 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private Rigidbody projectileBody;
     public float projectileDamage = 1f;
+    public float projectileSpeed = 1f;
 
     public void Initialize(Vector3 direction)
     {
-        projectileBody.AddForce(direction * 1000f + transform.up * 150f);
+        projectileBody.AddForce(direction * 1000f * projectileSpeed);
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -19,5 +21,6 @@ public class Projectile : MonoBehaviour
         {
             collision.gameObject.GetComponent<PlayerHealth>()?.TakeDamage(projectileDamage);
         }
+        Destroy(gameObject);
     }
 }
