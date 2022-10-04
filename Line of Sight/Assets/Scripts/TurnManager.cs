@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurnManager : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class TurnManager : MonoBehaviour
     public float timeForNextTurn;
     private float turnDelay;
 
+    public List<Text> timeTexts;
+    
     private void Awake()
     {
         cam1.SetActive(true);
@@ -29,30 +32,41 @@ public class TurnManager : MonoBehaviour
             cam1.SetActive(true);
             cam2.SetActive(false);
         }
+
+    }
+
+    private void Start()
+    {
+        turnDelay = timeForNextTurn;
     }
 
     private void Update()
     {
         if (waitingForNextTurn)
         {
-            turnDelay += Time.deltaTime;
-            if (turnDelay >= timeBetweenTurns)
+            turnDelay -= Time.deltaTime;
+            if (turnDelay <= 0)
             {
-                turnDelay = 0;
+                turnDelay = timeForNextTurn;
                 waitingForNextTurn = false;
                 ChangeTurn();
             }
         }
         else
         {
-            turnDelay += Time.deltaTime;
-            if (turnDelay >= timeForNextTurn)
+            turnDelay -= Time.deltaTime;
+            if (turnDelay <= 0)
             {
-                turnDelay = 0;
-                
+
                 TriggerChangeTurn();
             }
+            else 
+            {
+                DisplayTime(turnDelay);
+            }
         }
+
+        
     }
 
     public bool IsItPlayerTurn(int index)
@@ -73,7 +87,7 @@ public class TurnManager : MonoBehaviour
     public void TriggerChangeTurn()
     {
         waitingForNextTurn = true;
-        turnDelay = 0;
+        turnDelay = timeBetweenTurns;
     }
 
     private void ChangeTurn()
@@ -90,5 +104,17 @@ public class TurnManager : MonoBehaviour
             cam1.SetActive(true);
             cam2.SetActive(false);
         }
+    }
+
+    void DisplayTime(float timeToDisplay)
+    {
+        if (timeToDisplay < 0)
+        {
+            timeToDisplay = 0;
+        }
+
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+
+        timeTexts[currentPlayerIndex - 1].text = string.Format("{0:0}", seconds);
     }
 }
