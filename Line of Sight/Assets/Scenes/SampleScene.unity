@@ -10798,8 +10798,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.16512531, y: 0, z: 0, w: 0.9862726}
-  m_LocalPosition: {x: -14.52, y: 1.58, z: -30.18}
+  m_LocalRotation: {x: 0, y: 0.9862726, z: -0.16512531, w: 0}
+  m_LocalPosition: {x: 14.797463, y: 1.58, z: 30.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11867,7 +11867,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-16036
+  m_Name: pb_Mesh-1376
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13415,7 +13415,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-27130
+  m_Name: pb_Mesh-1508
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19918,6 +19918,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerTwo
       objectReference: {fileID: 0}
+    - target: {fileID: 3064879045444292875, guid: 6295016c40b458f49b3934b5bc7fb629, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3064879045444292878, guid: 6295016c40b458f49b3934b5bc7fb629, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -20023,6 +20027,10 @@ PrefabInstance:
     - target: {fileID: 8154830555013236000, guid: f192dccd02fd88543bf905e87e5ab498, type: 3}
       propertyPath: m_Name
       value: PlayerOne
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154830555013236027, guid: f192dccd02fd88543bf905e87e5ab498, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8154830555013236028, guid: f192dccd02fd88543bf905e87e5ab498, type: 3}
       propertyPath: m_RootOrder
